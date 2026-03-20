@@ -1,25 +1,21 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
 class EmailService {
     constructor() {
-        this.transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-        this.from = process.env.EMAIL_FROM || process.env.EMAIL_USER;
+        this.resend = process.env.RESEND_API_KEY
+            ? new Resend(process.env.RESEND_API_KEY)
+            : null;
+        this.from = process.env.EMAIL_FROM || 'BixInsight AI <onboarding@resend.dev>';
     }
 
     async sendMail(to, subject, html) {
         try {
-            if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-                console.log(`📧 Email skipped (no credentials): ${subject} → ${to}`);
+            if (!this.resend) {
+                console.log(`📧 Email skipped (no RESEND_API_KEY): ${subject} → ${to}`);
                 return false;
             }
-            await this.transporter.sendMail({
-                from: `"BixInsight AI" <${this.from}>`,
+            await this.resend.emails.send({
+                from: this.from,
                 to,
                 subject,
                 html
@@ -92,7 +88,7 @@ class EmailService {
       💬 Ask questions about your data
     </div>
     <div style="text-align:center; margin-top:24px;">
-      <a href="http://localhost:5173/dashboard" class="btn">Go to Dashboard →</a>
+      <a href="https://bix-insight-ai.vercel.app/dashboard" class="btn">Go to Dashboard →</a>
     </div>
         `);
         return this.sendMail(email, '🎉 Welcome to BixInsight AI!', html);
