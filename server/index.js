@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    origin: ['https://bix-insight-ai.vercel.app'],
     credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
