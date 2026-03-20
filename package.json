@@ -1,0 +1,12 @@
+{
+    "name": "bixinsight-ai",
+    "version": "1.0.0",
+    "description": "BixInsight AI - Business Intelligence Platform",
+    "private": true,
+    "scripts": {
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm run dev",
+        "python": "cd python-service && python main.py",
+        "install:all": "cd server && npm install && cd ../client && npm install && cd ../python-service && pip install -r requirements.txt"
+    }
+}
