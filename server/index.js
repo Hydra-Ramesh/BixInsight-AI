@@ -12,7 +12,7 @@ const server = http.createServer(app);
 // Socket.IO setup
 const io = new Server(server, {
     cors: {
-        origin: ['http://localhost:5173', 'http://localhost:3000'],
+        origin: ['https://bix-insight-ai.vercel.app'],
         methods: ['GET', 'POST'],
         credentials: true
     }
