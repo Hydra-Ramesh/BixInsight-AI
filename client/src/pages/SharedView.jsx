@@ -9,7 +9,7 @@ import {
 import { Lightbulb, Table, BarChart3, TrendingUp, AlertTriangle, Star, Zap, Brain, Sparkles } from 'lucide-react'
 import './AnalysisView.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 const CHART_COLORS = [
     '#6366f1', '#8b5cf6', '#a78bfa', '#c084fc',

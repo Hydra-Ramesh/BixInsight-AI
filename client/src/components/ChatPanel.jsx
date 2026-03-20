@@ -8,7 +8,7 @@ import {
 } from 'recharts'
 import './ChatPanel.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 const CHART_COLORS = [
     '#6366f1', '#8b5cf6', '#a78bfa', '#c084fc',
@@ -99,7 +99,7 @@ export default function ChatPanel({ analysisId, chatHistory: initialHistory }) {
         try {
             const chart = JSON.parse(jsonStr.trim())
             const data = chart.data || []
-            if (data.length === 0) return <p style={{color: 'var(--accent-red)'}}>[Chart data is empty]</p>
+            if (data.length === 0) return <p style={{ color: 'var(--accent-red)' }}>[Chart data is empty]</p>
 
             const tooltipStyle = { backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)', color: 'var(--text-primary)' }
 
@@ -145,17 +145,17 @@ export default function ChatPanel({ analysisId, chatHistory: initialHistory }) {
                                         {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
                                     </Pie>
                                     <Tooltip contentStyle={tooltipStyle} />
-                                    <Legend wrapperStyle={{fontSize: 10}} />
+                                    <Legend wrapperStyle={{ fontSize: 10 }} />
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
                     )
                 default:
-                    return <p style={{color:'var(--accent-orange)'}}>[Unsupported chart visualization: {chart.chartType}]</p>
+                    return <p style={{ color: 'var(--accent-orange)' }}>[Unsupported chart visualization: {chart.chartType}]</p>
             }
         } catch (e) {
             console.error("Chat Chart parsing error:", e)
-            return <p style={{color: 'var(--accent-red)'}}>[Error rendering chart from AI]</p>
+            return <p style={{ color: 'var(--accent-red)' }}>[Error rendering chart from AI]</p>
         }
     }
 
@@ -168,7 +168,7 @@ export default function ChatPanel({ analysisId, chatHistory: initialHistory }) {
         const parts = content.split('[[CHART_DATA:')
         const beforeText = parts[0]
         const rest = parts[1]
-        
+
         const endIdx = rest.indexOf(']]')
         if (endIdx === -1) return content.split('\n').map((line, i) => <span key={i}>{line}<br /></span>) // Fallback
 
@@ -177,9 +177,9 @@ export default function ChatPanel({ analysisId, chatHistory: initialHistory }) {
 
         return (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {beforeText.trim() && <div style={{marginBottom: 8}}>{beforeText.trim().split('\n').map((line, i) => <span key={`b-${i}`}>{line}<br /></span>)}</div>}
+                {beforeText.trim() && <div style={{ marginBottom: 8 }}>{beforeText.trim().split('\n').map((line, i) => <span key={`b-${i}`}>{line}<br /></span>)}</div>}
                 {renderInlineChart(jsonStr)}
-                {afterText.trim() && <div style={{marginTop: 8}}>{afterText.trim().split('\n').map((line, i) => <span key={`a-${i}`}>{line}<br /></span>)}</div>}
+                {afterText.trim() && <div style={{ marginTop: 8 }}>{afterText.trim().split('\n').map((line, i) => <span key={`a-${i}`}>{line}<br /></span>)}</div>}
             </div>
         )
     }

@@ -12,7 +12,7 @@ export function SocketProvider({ children }) {
     useEffect(() => {
         if (!user) return
 
-        const socket = io('http://localhost:5000', {
+        const socket = io('https://bixinsight-ai.onrender.com', {
             transports: ['websocket', 'polling']
         })
 

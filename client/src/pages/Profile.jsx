@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 import { Camera, User, Building2, ArrowLeft, Save, Calendar } from 'lucide-react'
 import './Profile.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 export default function Profile() {
     const { user, updateUser } = useAuth()

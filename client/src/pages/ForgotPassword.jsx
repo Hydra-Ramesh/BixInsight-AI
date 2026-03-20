@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Sparkles, Mail, Lock, KeyRound, ArrowRight, ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react'
 import './Auth.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 export default function ForgotPassword() {
     const navigate = useNavigate()

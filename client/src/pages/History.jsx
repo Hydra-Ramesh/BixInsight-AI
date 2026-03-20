@@ -4,7 +4,7 @@ import axios from 'axios'
 import { FileSpreadsheet, Clock, Trash2, ChevronLeft, ChevronRight, Search, BarChart3, AlertCircle } from 'lucide-react'
 import './History.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 export default function History() {
     const navigate = useNavigate()

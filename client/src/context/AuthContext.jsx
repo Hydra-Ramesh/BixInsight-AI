@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 import axios from 'axios'
 
 const AuthContext = createContext(null)
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://bixinsight-ai.onrender.com/api'
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)

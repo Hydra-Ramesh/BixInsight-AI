@@ -16,7 +16,7 @@ export default function Navbar() {
     }
 
     const getAvatarUrl = () => {
-        if (user?.avatar) return `http://localhost:5000${user.avatar}`
+        if (user?.avatar) return `https://bixinsight-ai.onrender.com${user.avatar}`
         return null
     }
 

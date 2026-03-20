@@ -7,7 +7,7 @@ import FileUpload from '../components/FileUpload'
 import { BarChart3, FileSpreadsheet, Brain, TrendingUp, Clock, ArrowRight } from 'lucide-react'
 import './Dashboard.css'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://bixinsight-ai.onrender.com/api'
 
 export default function Dashboard() {
     const { user } = useAuth()
